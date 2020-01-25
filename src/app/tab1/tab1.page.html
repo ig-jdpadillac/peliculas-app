@@ -3,37 +3,17 @@
 
 <ion-content>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <h3 class="h3">Estrenos</h3>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <app-slideshow-backdrop [peliculas]="peliculasRecientes" ></app-slideshow-backdrop>
+<app-current-title [title]="'Estrenos'"></app-current-title>
+<app-slideshow-backdrop [peliculas]="peliculasRecientes" ></app-slideshow-backdrop>
 
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <h3 class="h3">Cartelera</h3>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
-  <app-slideshow-poster [peliculas]="peliculasRecientes"></app-slideshow-poster>
+<app-current-title [title]="'Cartelera'"></app-current-title>
+ <app-slideshow-poster [peliculas]="peliculasRecientes"></app-slideshow-poster>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <h3 class="h3">Populares</h3>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
-  <app-slideshow-poster [peliculas]="populares"></app-slideshow-poster>
-
+ <app-current-title [title]="'Populares'"></app-current-title>
+ <app-slidesho-pares [peliculas]="populares" ></app-slidesho-pares>
   
 
 </ion-content>
