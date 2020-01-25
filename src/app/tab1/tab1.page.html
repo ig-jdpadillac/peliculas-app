@@ -6,7 +6,7 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <h3 class="h3">Pelicuas en estreno</h3>
+        <h3 class="h3">Estrenos</h3>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -17,12 +17,22 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <h3 class="h3">En cartelera</h3>
+        <h3 class="h3">Cartelera</h3>
       </ion-col>
     </ion-row>
   </ion-grid>
 
   <app-slideshow-poster [peliculas]="peliculasRecientes"></app-slideshow-poster>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h3 class="h3">Populares</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <app-slideshow-poster [peliculas]="populares"></app-slideshow-poster>
 
   
 

@@ -40,4 +40,14 @@ export class MoviesService {
     const fin = `${hoy.getFullYear()}-${mesString}-${ultimoDia}`;
     return this.ejecutarquery(`/discover/movie?primary_release_date.gte=${inicio}&primary_release_date.lte=${fin}`);
   }
+
+
+
+  public getPopulares(): Observable<Respuesta> {
+
+    const query: string = '/discover/movie?sort_by=popularity.desc';
+
+    return this.ejecutarquery(query);
+
+  }
 }
