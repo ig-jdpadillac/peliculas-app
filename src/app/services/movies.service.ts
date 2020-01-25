@@ -17,7 +17,6 @@ export class MoviesService {
     query = environment.url + query;
 
     query += environment.apyKey + '&language=es&include_image_language';
-    console.log(query)
 
     return this.http.get<Respuesta>(query);
   }
@@ -39,6 +38,6 @@ export class MoviesService {
 
     const inicio = `${hoy.getFullYear()}-${mesString}-01`;
     const fin = `${hoy.getFullYear()}-${mesString}-${ultimoDia}`;
-    return this.ejecutarquery(`/discover/movie?primary_release_date.gte=${inicio}&primary_release_date.lte=${fin}`)
+    return this.ejecutarquery(`/discover/movie?primary_release_date.gte=${inicio}&primary_release_date.lte=${fin}`);
   }
 }
