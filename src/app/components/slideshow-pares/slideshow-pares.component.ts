@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-slidesho-pares',
@@ -8,6 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SlideshoParesComponent implements OnInit {
 
   @Input() peliculas: Peliculas[] = [];
+  @Output() cargarSiguientes: EventEmitter<any> = new EventEmitter();
+
+
   public slideOpts = {
     slidesPerView: 3.3,
     freeMode: true,
@@ -18,5 +21,9 @@ export class SlideshoParesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {}
+
+  cargarMas() {
+    this.cargarSiguientes.emit();
+  }
 
 }

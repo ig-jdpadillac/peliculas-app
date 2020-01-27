@@ -1,6 +1,4 @@
 
-
-
 <ion-content>
 
 <app-current-title [title]="'Estrenos'"></app-current-title>
@@ -13,7 +11,7 @@
 
 
  <app-current-title [title]="'Populares'"></app-current-title>
- <app-slidesho-pares [peliculas]="populares" ></app-slidesho-pares>
+ <app-slidesho-pares (cargarSiguientes)="cargarMas()" [peliculas]="populares" ></app-slidesho-pares>
   
 
 </ion-content>

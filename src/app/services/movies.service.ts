@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 })
 export class MoviesService {
 
+  private popularesPage: number = 0;
+
   constructor(
     private http: HttpClient
   ) { }
@@ -44,9 +46,8 @@ export class MoviesService {
 
 
   public getPopulares(): Observable<Respuesta> {
-
-    const query: string = '/discover/movie?sort_by=popularity.desc';
-
+    this.popularesPage ++;
+    const query: string = `/discover/movie?sort_by=popularity.desc&page=${this.popularesPage}`;
     return this.ejecutarquery(query);
 
   }
