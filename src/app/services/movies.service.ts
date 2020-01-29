@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Respuesta } from '../interfaces/respuesta.interface';
 import { environment } from 'src/environments/environment';
-import PeliculaDetalle from '../interfaces/peliculaDetalleinterface';
 import { RespuestaCredits } from '../interfaces/credits.interface';
+import { PeliculaDetalle } from '../interfaces/peliculaDetalleinterface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +17,10 @@ export class MoviesService {
     private http: HttpClient
   ) { }
 
-  private ejecutarquery<T>(query: string) {
+  private ejecutarquery(query: string) {
     query = environment.url + query;
 
     query += environment.apyKey + '&language=es&include_image_language';
-    console.log(query);
     return this.http.get<Respuesta>(query);
   }
 
@@ -53,10 +52,10 @@ export class MoviesService {
     return this.ejecutarquery(query);
   }
 
-  getDetallePelicula(peliculasId: string) {
-    return this.ejecutarquery<PeliculaDetalle>(`/movie/${peliculasId}?a=1`);
+  getDetallePelicula(peliculasId: string): Observable<any> {
+    return this.ejecutarquery(`/movie/${peliculasId}?a=1`);
   }
-  getActoresPelicula(peliculasId: string) {
-    return this.ejecutarquery<RespuestaCredits>(`/movie/${peliculasId}/credits?a=1`);
+  getActoresPelicula(peliculasId: string): Observable<any> {
+    return this.ejecutarquery(`/movie/${peliculasId}/credits?a=1`);
   }
 }
