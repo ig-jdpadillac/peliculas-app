@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { DetalleComponent } from '../detalle/detalle.component';
 
 @Component({
   selector: 'app-slidesho-pares',
@@ -18,12 +20,25 @@ export class SlideshoParesComponent implements OnInit {
   };
 
 
-  constructor() { }
+  constructor(
+    private modalCtrl: ModalController
+  ) { }
 
   ngOnInit() {}
 
   cargarMas() {
     this.cargarSiguientes.emit();
+  }
+
+  async verDetalle(movieId: string) {
+    const modal = await this.modalCtrl.create({
+      component: DetalleComponent,
+      componentProps: {
+        movieId
+      }
+    });
+
+    modal.present();
   }
 
 }

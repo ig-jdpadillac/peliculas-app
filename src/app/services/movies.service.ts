@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Respuesta } from '../interfaces/respuesta.interface';
 import { environment } from 'src/environments/environment';
+import PeliculaDetalle from '../interfaces/peliculaDetalleinterface';
+import { RespuestaCredits } from '../interfaces/credits.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +17,11 @@ export class MoviesService {
     private http: HttpClient
   ) { }
 
-  private ejecutarquery(query: string) {
+  private ejecutarquery<T>(query: string) {
     query = environment.url + query;
 
     query += environment.apyKey + '&language=es&include_image_language';
-
+    console.log(query);
     return this.http.get<Respuesta>(query);
   }
 
@@ -49,6 +51,12 @@ export class MoviesService {
     this.popularesPage ++;
     const query: string = `/discover/movie?sort_by=popularity.desc&page=${this.popularesPage}`;
     return this.ejecutarquery(query);
+  }
 
+  getDetallePelicula(peliculasId: string) {
+    return this.ejecutarquery<PeliculaDetalle>(`/movie/${peliculasId}?a=1`);
+  }
+  getActoresPelicula(peliculasId: string) {
+    return this.ejecutarquery<RespuestaCredits>(`/movie/${peliculasId}/credits?a=1`);
   }
 }
