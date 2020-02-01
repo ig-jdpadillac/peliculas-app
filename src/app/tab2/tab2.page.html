@@ -1,9 +1,37 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Buscar peliculas
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-toolbar>
+  <ion-searchbar placeholder="Buscar pelicula" 
+                 animated
+                 inputmode="email"
+                 [value]="textoBuscar" 
+                 (ionChange)="buscar($event)" 
+                 [debounce]="700">
+  </ion-searchbar>
+</ion-toolbar>
 
-<ion-content></ion-content>
+<ion-grid fixed >
+  <ion-row>
+    <ion-col size="12" class="ion-text-center ">
+      <ion-spinner name="crescent"></ion-spinner>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Ideas</ion-label>
+    </ion-list-header>
+
+    <ion-item *ngFor="let idea of ideas">
+      <ion-label (click)="textoBuscar = idea" color="primary" > {{ idea }} </ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
