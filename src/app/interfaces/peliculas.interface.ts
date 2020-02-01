@@ -1,4 +1,4 @@
-interface Peliculas {
+export interface Peliculas {
     popularity: number;
     vote_count: number;
     video: boolean;

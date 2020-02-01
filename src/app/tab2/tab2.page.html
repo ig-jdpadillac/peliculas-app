@@ -15,16 +15,18 @@
   </ion-searchbar>
 </ion-toolbar>
 
-<ion-grid fixed >
+
+<ion-content>
+
+<ion-grid *ngIf="searching" >
   <ion-row>
-    <ion-col size="12" class="ion-text-center ">
+    <ion-col class="ion-text-center ">
       <ion-spinner name="crescent"></ion-spinner>
     </ion-col>
   </ion-row>
 </ion-grid>
 
-<ion-content>
-  <ion-list>
+  <ion-list *ngIf="movieList.length === 0"> 
     <ion-list-header>
       <ion-label>Ideas</ion-label>
     </ion-list-header>
@@ -34,4 +36,22 @@
     </ion-item>
 
   </ion-list>
+
+  <ion-grid >
+    <ion-row>
+      <ion-col size="6" *ngFor="let p of movieList">
+        <ion-card (click)="verDetalleModal(p.id)">
+          <img [src]="p.poster_path | imagen" alt="">
+
+          <ion-card-header>
+            <ion-card-subtitle> {{ p.release_date }} </ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <h2> {{ p.title }} </h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
