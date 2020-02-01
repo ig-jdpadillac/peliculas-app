@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { DetalleComponent } from '../detalle/detalle.component';
+import { Peliculas } from 'src/app/interfaces/peliculas.interface';
 
 @Component({
   selector: 'app-slideshow-backdrop',

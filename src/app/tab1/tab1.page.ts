@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../services/movies.service';
+import { Peliculas } from '../interfaces/peliculas.interface';
 
 @Component({
   selector: 'app-tab1',

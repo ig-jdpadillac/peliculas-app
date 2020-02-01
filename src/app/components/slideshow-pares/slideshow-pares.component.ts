@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { DetalleComponent } from '../detalle/detalle.component';
+import { Peliculas } from 'src/app/interfaces/peliculas.interface';
 
 @Component({
   selector: 'app-slidesho-pares',
