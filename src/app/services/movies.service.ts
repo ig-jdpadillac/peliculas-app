@@ -5,6 +5,7 @@ import { Respuesta } from '../interfaces/respuesta.interface';
 import { environment } from 'src/environments/environment';
 import { RespuestaCredits } from '../interfaces/credits.interface';
 import { PeliculaDetalle } from '../interfaces/peliculaDetalleinterface';
+import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class MoviesService {
     query = environment.url + query;
 
     query += environment.apyKey + '&language=es&include_image_language';
+    console.log(query);
     return this.http.get<Respuesta>(query);
   }
 
@@ -55,7 +57,13 @@ export class MoviesService {
   getDetallePelicula(peliculasId: string): Observable<any> {
     return this.ejecutarquery(`/movie/${peliculasId}?a=1`);
   }
+
+
   getActoresPelicula(peliculasId: string): Observable<any> {
     return this.ejecutarquery(`/movie/${peliculasId}/credits?a=1`);
+  }
+
+  searchMovie(termino: string) {
+    return this.ejecutarquery(`/search/movie?query=${termino}`);
   }
 }
