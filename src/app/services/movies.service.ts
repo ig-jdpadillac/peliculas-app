@@ -13,6 +13,7 @@ import { ThrowStmt } from '@angular/compiler';
 export class MoviesService {
 
   private popularesPage: number = 0;
+  public generos: any[] = [];
 
   constructor(
     private http: HttpClient
@@ -49,7 +50,7 @@ export class MoviesService {
 
 
   public getPopulares(): Observable<Respuesta> {
-    this.popularesPage ++;
+    this.popularesPage++;
     const query: string = `/discover/movie?sort_by=popularity.desc&page=${this.popularesPage}`;
     return this.ejecutarquery(query);
   }
@@ -65,5 +66,19 @@ export class MoviesService {
 
   searchMovie(termino: string) {
     return this.ejecutarquery(`/search/movie?query=${termino}`);
+  }
+
+  cargarGeneros(): Promise<any> {
+    return new Promise(resolve => {
+      this.ejecutarquery('/genre/movie/list?a=1')
+      .subscribe( res => {
+        // tslint:disable-next-line: no-string-literal
+        this.generos = res['genres'];
+        console.log(this.generos);
+        resolve(this.generos);
+      });
+    });
+
+
   }
 }

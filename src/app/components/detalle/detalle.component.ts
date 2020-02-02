@@ -16,6 +16,8 @@ export class DetalleComponent implements OnChanges, OnInit {
   public pelicula: PeliculaDetalle = new Object();
   public actores: Cast[] = [];
   public oculto: number = 150;
+  public existeEnFavoritos: boolean = false;
+  public estrella: string = 'star-outline';
 
   slideActores = {
     slidesPerView: 3.3,
@@ -29,7 +31,9 @@ export class DetalleComponent implements OnChanges, OnInit {
     private dataLocal: DataLocalService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.existeEnFavoritos = await this.dataLocal.existePeliula(this.movieId);
+    this.estrella = (this.existeEnFavoritos) ? 'star' : 'star-outline';
     this.getDetalle();
     this.getActores();
   }
@@ -53,7 +57,9 @@ export class DetalleComponent implements OnChanges, OnInit {
   }
 
   guardarFavrito() {
-    this.dataLocal.guardarPelicula(this.pelicula);
+    const existe = this.dataLocal.guardarPelicula(this.pelicula);
+    this.estrella = (existe) ? 'star' : 'star-outline';
+
   }
 
   regresar() {

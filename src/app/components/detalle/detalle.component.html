@@ -67,7 +67,7 @@
     <ion-slide *ngFor="let a of actores ">
       <ion-card class="card-actor">
         <img *ngIf="a.profile_path" [src]="a.profile_path | imagen" alt="">
-        <img *ngIf="!a.profile_path" src="/assets/imagen/no-avatar.jpg">
+        <img *ngIf="!a.profile_path" src="/assets/images/no-avatar.jpg">
 
         <ion-label style="margin-top: 15px !important; padding: 5px !important;">{{ a.name }} </ion-label>
       </ion-card>
@@ -87,7 +87,7 @@
 
     <ion-buttons slot="end">
       <ion-button (click)="guardarFavrito()">
-        <ion-icon slot="end" name="star-outline"></ion-icon>
+        <ion-icon slot="end" [name]="estrella"></ion-icon>
         <ion-label>Favorito</ion-label>
       </ion-button>
     </ion-buttons>
