@@ -22,16 +22,27 @@ export class Tab3Page implements OnInit {
   ) {}
 
   async ngOnInit() {
+
+  }
+
+  async ionViewWillEnter() {
     this.peliculas = await this.dataLocal.cargarFavoritos();
     this.generos =  await this.movieService.cargarGeneros();
-    console.log(this.peliculas);
     this.pelisPorGenero(this.peliculas, this.generos);
   }
 
   pelisPorGenero(peliculas: PeliculaDetalle[], generos: Genre[]) {
 
-    
+    this.favList = [];
 
+    generos.forEach((genero, i) => {
+      this.favList.push({
+        genero: genero.name,
+        pelis: peliculas.filter(peli => {
+          return peli.genres.find( genre => genre.id === genero.id );
+        })
+      });
+    });
   }
 
 }

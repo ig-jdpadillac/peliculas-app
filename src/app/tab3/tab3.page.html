@@ -11,16 +11,16 @@
   </ion-grid>
 
 
-  <div *ngFor="let genero of generos ">
-    <ion-grid fixed>
+  <div *ngFor="let categoria of favList ">
+    <ion-grid *ngIf="categoria.pelis.length > 0">
       <ion-row>
         <ion-col>
-          {{ genero.name  }}
+          {{ categoria.genero  }}
         </ion-col>
       </ion-row>
     </ion-grid>
 
-  <app-slideshow-poster [peliculas]="peliculas"></app-slideshow-poster>
+  <app-slideshow-poster [peliculas]="categoria.pelis"></app-slideshow-poster>
 
 
     
